@@ -240,11 +240,13 @@ services:
       # GOTRUE_HOOK_CUSTOM_ACCESS_TOKEN_URI: "pg-functions://postgres/public/custom_access_token_hook"
       # GOTRUE_HOOK_CUSTOM_ACCESS_TOKEN_SECRETS: "<standard-base64-secret>"
 
-      # GOTRUE_HOOK_MFA_VERIFICATION_ATTEMPT_ENABLED: "true"
-      # GOTRUE_HOOK_MFA_VERIFICATION_ATTEMPT_URI: "pg-functions://postgres/public/mfa_verification_attempt"
+      # 123 Cupons (P1): bloqueio progressivo de login. Valores no .env do EasyPanel;
+      # sem a variavel o hook fica desligado (:-false), sem quebrar o auth.
+      GOTRUE_HOOK_MFA_VERIFICATION_ATTEMPT_ENABLED: ${GOTRUE_HOOK_MFA_VERIFICATION_ATTEMPT_ENABLED:-false}
+      GOTRUE_HOOK_MFA_VERIFICATION_ATTEMPT_URI: ${GOTRUE_HOOK_MFA_VERIFICATION_ATTEMPT_URI:-}
 
-      # GOTRUE_HOOK_PASSWORD_VERIFICATION_ATTEMPT_ENABLED: "true"
-      # GOTRUE_HOOK_PASSWORD_VERIFICATION_ATTEMPT_URI: "pg-functions://postgres/public/password_verification_attempt"
+      GOTRUE_HOOK_PASSWORD_VERIFICATION_ATTEMPT_ENABLED: ${GOTRUE_HOOK_PASSWORD_VERIFICATION_ATTEMPT_ENABLED:-false}
+      GOTRUE_HOOK_PASSWORD_VERIFICATION_ATTEMPT_URI: ${GOTRUE_HOOK_PASSWORD_VERIFICATION_ATTEMPT_URI:-}
 
       # GOTRUE_HOOK_SEND_SMS_ENABLED: "false"
       # GOTRUE_HOOK_SEND_SMS_URI: "pg-functions://postgres/public/custom_access_token_hook"
